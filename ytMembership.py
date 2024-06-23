@@ -21,7 +21,7 @@ def get_authenticated_service():
     else:
     #UCRCAtC_t-Z8GTK7vcRUONRA
         flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(CLIENT_SECRETS_FILE, SCOPES)
-        credentials = flow.run_local_server(port=0)
+        credentials = flow.run_local_server(port=9527)
         # 保存認證令牌
         with open('token.json', 'w') as token:
             token.write(credentials.to_json())

@@ -32,7 +32,7 @@ RATINGS = ('like', 'dislike', 'none')
 # Authorize the request and store authorization credentials.
 def get_authenticated_service():
   flow = InstalledAppFlow.from_client_secrets_file(CLIENT_SECRETS_FILE, SCOPES)
-  credentials = flow.run_local_server(port=0)
+  credentials = flow.run_local_server(port=9527)
   return build(API_SERVICE_NAME, API_VERSION, credentials = credentials)
 
 # Add the video rating. This code sets the rating to 'like,' but you could
