@@ -20,15 +20,14 @@ def get_authenticated_service():
         credentials = google.oauth2.credentials.Credentials.from_authorized_user_file('token.json', SCOPES)
     else:
     #UCRCAtC_t-Z8GTK7vcRUONRA
-
-    flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(CLIENT_SECRETS_FILE, SCOPES)
-    credentials = flow.run_local_server(port=0)
-    # 保存認證令牌
-    with open('token.json', 'w') as token:
-        token.write(credentials.to_json())
-    
-    #credentials = google.oauth2.credentials.Credentials('4/0ATx3LY4q1AB3sD8nKhQqul6RPqmVstzcmoHhVyqGhOFCMma1zXuiFXXI1YwJbCnHKQTquA', 'my-user-agent/1.0')
-    
+        flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(CLIENT_SECRETS_FILE, SCOPES)
+        credentials = flow.run_local_server(port=0)
+        # 保存認證令牌
+        with open('token.json', 'w') as token:
+            token.write(credentials.to_json())
+        
+        #credentials = google.oauth2.credentials.Credentials('4/0ATx3LY4q1AB3sD8nKhQqul6RPqmVstzcmoHhVyqGhOFCMma1zXuiFXXI1YwJbCnHKQTquA', 'my-user-agent/1.0')
+        
     return googleapiclient.discovery.build(API_SERVICE_NAME, API_VERSION, credentials=credentials)
 
 def get_members(youtube, channel_id):
@@ -67,7 +66,6 @@ if __name__ == "__main__":
 
     if youtube:
         channel_id = input("請輸入你的頻道ID: ")
-
         try:
             members = get_members(youtube, channel_id)
             if members:
